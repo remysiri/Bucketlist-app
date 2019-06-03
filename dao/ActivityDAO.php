@@ -22,7 +22,7 @@ class ActivityDAO extends DAO {
             $stmt->bindValue('name', $data['name']);
             $stmt->bindValue('description', $data['description']);
             $stmt->bindValue('active', 0);
-            $stmt->bindValue('created_by', $data['id']);
+            $stmt->bindValue('created_by', $_SESSION['id']);
             $stmt->execute();
         }
     }

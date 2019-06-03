@@ -19,7 +19,7 @@ class ActivitiesController extends Controller{
     if(!empty($_POST['action'])){
       if($_POST["action"] == "createActivity") {
         $insertActivity = $this->activityDAO->createActivity($_POST);
-        if(!$insertActivty){
+        if(!$insertActivity){
           $errors = $this->activityDAO->validate($_POST);
           $this->set("errors", $errors);
         }else{
