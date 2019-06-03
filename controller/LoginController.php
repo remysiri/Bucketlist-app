@@ -14,10 +14,17 @@ class LoginController extends Controller{
 
     if(!empty($_POST['action'])){
       if($_POST["action"] == "login") {
-        if(!empty($_POST["username"])) {
+        $checkUser = $this->userDAO->logUserIn($_POST);
+        if(!$checkUser) {
+          $errors = $this->userDAO->validateLogin($_POST);
+          $this->set("errors", $errors);
+        } else {
+          $_SESSION["info"] = "Logged in!";
+          header("location: index.php");
         }
       }
     }
 
   }
+
 }

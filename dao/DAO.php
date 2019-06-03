@@ -5,8 +5,8 @@ class DAO {
   // Properties
   private static $dbHost = "localhost";
 	private static $dbName = "int2_bucket";
-	private static $dbUser = "integration_2";
-	private static $dbPass = "devine";
+	private static $dbUser = "root";
+	private static $dbPass = "";
 	private static $sharedPDO;
 	protected $pdo;
 

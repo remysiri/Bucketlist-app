@@ -11,6 +11,10 @@
 <body>
   <main>
     <header>
+    <?php if(!empty($_SESSION["logged"])): ?>
+    <span>logged in as</span>
+    <span><?php echo $_SESSION["username"]; ?></span>
+<?php endif; ?>
     </header>
     <?php echo $content; ?>
   </main>
