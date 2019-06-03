@@ -19,6 +19,9 @@ class LoginController extends Controller{
           $errors = $this->userDAO->validateLogin($_POST);
           $this->set("errors", $errors);
         } else {
+          $_SESSION["username"] = $checkUser["username"];
+          $_SESSION["id"] = $checkUser["id"];
+          $_SESSION["logged"] = true;
           $_SESSION["info"] = "Logged in!";
           header("location: index.php");
         }

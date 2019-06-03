@@ -15,7 +15,22 @@ class ActivitiesController extends Controller{
   }
 
   public function create() {
-    
+
+    if(!empty($_POST['action'])){
+      if($_POST["action"] == "createActivity") {
+        $insertActivity = $this->activityDAO->createActivity($_POST);
+        if(!$insertActivty){
+          $errors = $this->activityDAO->validate($_POST);
+          $this->set("errors", $errors);
+        }else{
+          $_SESSION['info'] = 'Nieuwe Bucket item toegevoegd';
+          header('Location:index.php');
+          exit();
+        }
+      }
+    }
+
+
   }
 }
 

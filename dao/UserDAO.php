@@ -18,8 +18,11 @@ class UserDAO extends DAO {
     public function logUserIn($data) {
         $errors = $this->validateLogin($data);
         if(empty($errors)) {
-            $_SESSION["logged"] = true;
-            $_SESSION["username"] = $data["username"];
+            $sql = "SELECT * FROM users WHERE username = :username";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindValue("username", $data["username"]);
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_ASSOC);
         }
     }
 

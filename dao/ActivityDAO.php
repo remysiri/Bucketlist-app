@@ -14,8 +14,17 @@ class ActivityDAO extends DAO {
 
     }
 
-    public function createActivity() {
-
+    public function createActivity($data) {
+        $errors = $this->validate($data);
+        if(empty($errors)) {
+            $sql = "INSERT INTO `activities` (`name`,`description`,`active`, `created_by`) VALUES (:name, :description, :active, :created_by)";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindValue('name', $data['name']);
+            $stmt->bindValue('description', $data['description']);
+            $stmt->bindValue('active', 0);
+            $stmt->bindValue('created_by', $data['id']);
+            $stmt->execute();
+        }
     }
 
     public function editActivity() {
@@ -24,5 +33,17 @@ class ActivityDAO extends DAO {
 
     public function deleteActivity() {
 
+    }
+
+    public function validate($data) {
+        $errors = [];
+
+        if(empty($data["name"])) {
+            $errors["name"] = "Name required";
+        }
+        if(empty($data["description"])) {
+            $errors["description"] = "Name required";
+        }
+    
     }
 }
