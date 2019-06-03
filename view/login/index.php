@@ -13,5 +13,5 @@
     <div class="form-group">
         <button type="submit">Login</button>
     </div>
-    <p><a href="index.php?page=register">Sign Up</a></p>
+    <p>No account yet?<a href="index.php?page=register">Sign Up</a></p>
 </form>

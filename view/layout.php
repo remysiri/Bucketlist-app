@@ -6,18 +6,32 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/style.css">
-  <title>Bucketlist</title>
+  <title>Motorsports Bucketlist</title>
 </head>
 <body>
   <main>
     <header>
-    <?php if(!empty($_SESSION["logged"])): ?>
-    <span>logged in as</span>
-    <span><?php echo $_SESSION["username"]; ?></span>
-<?php endif; ?>
+      <h1 class="header__title">Motor<span class="red-bold">sports</span> Bucketlist</h1>
+      <p class="header__undertitle">Your dreams starts here</p>
     </header>
-    <?php echo $content; ?>
+
+
+    <?php if(!empty($_SESSION["logged"])): ?>
+        <span>logged in as</span>
+        <span><?php echo $_SESSION["username"]; ?></span>
+        <form action="" method="POST">
+          <input type="hidden" name="action" value="logout"/>
+          <button type="submit">Logout</button>
+        </form>
+      <?php endif; ?>
+
+    <div class="main__container">
+      <?php echo $content; ?>
+    </div>
+    <footer>
+      <p class="footer__copy">Motorsports Bucketlist 2019. All Rights Reserved | <span><a href="">Terms & Conditions</a></span></p>
+    </footer>
   </main>
   <script src="js/script.js"></script>
-</body>
+  </body>
 </html>

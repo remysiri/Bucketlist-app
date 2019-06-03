@@ -37,6 +37,14 @@ if (empty($routes[$_GET['page']])) {
   exit();
 }
 
+if(!empty($_POST['action'])){
+  if($_POST["action"] == "logout") {
+    $_SESSION = array();
+    header('location: index.php');
+    exit();
+  }
+}
+
 $route = $routes[$_GET['page']];
 $controllerName = $route['controller'] . 'Controller';
 
