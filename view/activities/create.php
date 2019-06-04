@@ -12,6 +12,17 @@
         <span class="description_error"><?php if(!empty($errors["description"])) { echo $errors["description"]; } ?></span>
     </div>
     <div class="form-group">
+        <select name="category">
+            <option value="racing">Racing</option>
+            <option value="stunts">Stunts</option>
+            <option value="sightseeing">Sightseeing</option>
+            <option value="events">Events</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <input type="datetime-local" name="start-time" id="start-time" />
+    </div>
+    <div class="form-group">
         <button type="submit">Create</button>
     </div>
 </form>

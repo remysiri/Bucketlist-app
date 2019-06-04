@@ -13,9 +13,23 @@ class ActivitiesController extends Controller{
       $activeActivity = $this->activityDAO->selectActivityByActive();
       $popularActivity = $this->activityDAO->selectActivityByVotes(10);
 
+
+      $startTime = gmdate('U', strtotime($activeActivity["start_time"]));
+      $remain = $startTime - gmdate('U');
+
+      $days_left = floor($remain / (24 * 60 * 60));
+      $hours_left = floor($remain % (24 * 60 * 60) / 3600);
+      $minutes_left = floor($remain % (60 * 60) / 60);
+      $seconds_left = floor($remain % 60);
+
       $this->set("activities", $activities);
       $this->set("active", $activeActivity);
       $this->set("popular", $popularActivity);
+      $this->set("days", $days_left);
+      $this->set("hours", $hours_left);
+      $this->set("minutes", $minutes_left);
+      $this->set("seconds", $seconds_left);
+
   }
 
   public function create() {

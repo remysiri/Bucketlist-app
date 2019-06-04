@@ -28,10 +28,16 @@ input {
 
 h2 {
     font-weight: bold;
+    text-transform: uppercase;
 }
 
 h3 {
     font-size: 14px;
+}
+
+.title-center {
+    text-align: center;
+    vertical-align: middle;
 }
 
 /*------------------------------LAYOUT----------------------*/
@@ -109,6 +115,14 @@ main {
     width: 100%;
     height: 200px;
     border: 1px solid black;
+    overflow: hidden;
+    position: relative;
+}
+
+.fullwidth-item img {
+    width: 100%;
+    object-fit: cover;
+    object-position: center -200px;
 }
 
 .title-left-margin {
@@ -125,10 +139,21 @@ main {
 .four-grid-item {
     border: 1px solid black;
     height: 214px;
+    display: grid;
+    align-items: center;
+    justify-content: center;
 }
 
 .activity__title {
     text-transform: uppercase;
+}
+
+.bottom-left {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 9999;
+    padding: 20px 40px;
 }
 
 .activity__more {
