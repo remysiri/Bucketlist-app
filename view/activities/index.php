@@ -1,5 +1,14 @@
-<h2>Activities list</h2>
-<a href="index.php?page=create">Create new activity</a>
+<h2>Happening in<span>xdays xhours xminutes xseconds</span></h2>
+<div class="">
+</div>
+
+<h2>Top picks</h2>
+<div class="">
+</div>
+
+<h2>Categories</h2>
+<div class="">
+</div>
 
 <?php if(empty($activities)): ?>
 <p>Geen activiteiten</p>

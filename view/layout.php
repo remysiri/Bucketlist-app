@@ -15,15 +15,20 @@
       <p class="header__undertitle">Your dreams starts here</p>
     </header>
 
-
     <?php if(!empty($_SESSION["logged"])): ?>
-        <span>logged in as</span>
-        <span><?php echo $_SESSION["username"]; ?></span>
-        <form action="" method="POST">
-          <input type="hidden" name="action" value="logout"/>
-          <button type="submit">Logout</button>
-        </form>
-      <?php endif; ?>
+      <nav class="navigation">
+        <ul>
+          <li><p>logged in as <span><?php echo $_SESSION["username"]; ?></span></p><li>
+          <li><a href="index.php?page=create">Create new activity</a></li>
+          <li><a href="">My bucketlist</a></li>
+          <li><a href="">Saved Items</a></li>
+          <li><a href="">My Bookings</a></li>
+          <form action="" method="POST">
+            <input type="hidden" name="action" value="logout"/>
+            <button type="submit">Logout</button>
+          </form>
+      </nav>
+    <?php endif; ?>
 
     <div class="main__container">
       <?php echo $content; ?>
