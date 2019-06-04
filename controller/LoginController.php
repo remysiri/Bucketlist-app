@@ -21,6 +21,7 @@ class LoginController extends Controller{
         } else {
           $_SESSION["username"] = $checkUser["username"];
           $_SESSION["id"] = $checkUser["id"];
+          $_SESSION["role"] = $checkUser["role"];
           $_SESSION["logged"] = true;
           $_SESSION["info"] = "Logged in!";
           header("location: index.php");

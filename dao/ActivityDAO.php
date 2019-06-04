@@ -14,6 +14,21 @@ class ActivityDAO extends DAO {
 
     }
 
+    public function selectActivityByActive() {
+        $sql = "SELECT * FROM activities WHERE active = 1";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function selectActivityByVotes($votes) {
+        $sql = "SELECT * FROM activities WHERE votes >= :votes";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue("votes", $votes);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public function createActivity($data) {
         $errors = $this->validate($data);
         if(empty($errors)) {

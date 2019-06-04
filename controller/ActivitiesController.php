@@ -10,8 +10,12 @@ class ActivitiesController extends Controller{
   }
   public function index() {
       $activities = $this->activityDAO->selectAllActivities();
+      $activeActivity = $this->activityDAO->selectActivityByActive();
+      $popularActivity = $this->activityDAO->selectActivityByVotes(10);
 
       $this->set("activities", $activities);
+      $this->set("active", $activeActivity);
+      $this->set("popular", $popularActivity);
   }
 
   public function create() {

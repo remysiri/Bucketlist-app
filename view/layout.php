@@ -23,6 +23,9 @@
           <li><a href="">My bucketlist</a></li>
           <li><a href="">Saved Items</a></li>
           <li><a href="">My Bookings</a></li>
+          <?php if($_SESSION["role"] === 3): ?>
+            <li><a href="">Administration</a></li>
+          <?php endif; ?>
           <form action="" method="POST">
             <input type="hidden" name="action" value="logout"/>
             <button type="submit">Logout</button>
