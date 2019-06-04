@@ -44,16 +44,22 @@ class UserDAO extends DAO {
         $errors = [];
 
         if(!empty($data["username"])) {
-            $sql_login_username = "SELECT username FROM users WHERE username = :username";
+            $sql_login_username = "SELECT username, password FROM users WHERE username = :username";
             $stmt = $this->pdo->prepare($sql_login_username);
             $stmt->bindValue("username", $data["username"]);
             $stmt->execute();
             $result_username = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            if($result_username !== $data["username"]) {
-                $errors["username"] = "Username does not exists.";
+            if($result_username["username"] !== $data["username"]) {
+                $errors["username"] = "Username does not exists";
+            }
+
+            if (!password_verify($data["password"], $result_username["password"])) {
+                $errors["password"] = "Password inccorect";
             }
         }
+
+        return $errors;
     }
 
     public function validate($data) {
