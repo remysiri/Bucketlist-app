@@ -24,16 +24,16 @@
 
 <h2 class="title-left-margin">Categories</h2>
 <div class="grid-wrapper">
-    <a href="index.php?page=category" class="four-grid-item">
+    <a href="index.php?page=list&category=racing" class="four-grid-item">
         <h3 class="activity__title title-center">Racing</h3>
     </a>
-    <a href="index.php?page=category" class="four-grid-item">
+    <a href="index.php?page=list&category=stunts" class="four-grid-item">
         <h3 class="activity__title title-center">Stunts</h3>
     </a>
-    <a href="index.php?page=category" class="four-grid-item">
+    <a href="index.php?page=list&category=trackdays" class="four-grid-item">
         <h3 class="activity__title title-center">Track Days</h3>
     </a>
-    <a href="index.php?page=category" class="four-grid-item">
+    <a href="index.php?page=list&category=events" class="four-grid-item">
         <h3 class="activity__title title-center">Events</h3>
     </a>
 </div>

@@ -21,9 +21,13 @@ $routes = array(
     'controller' => 'Activities',
     'action' => 'create'
   ),
-  'category' => array(
-    'controller' => 'Category',
-    'action' => 'index'
+  'list' => array(
+    'controller' => 'Activities',
+    'action' => 'list'
+  ),
+  'detail' => array(
+    'controller' => 'Activities',
+    'action' => 'detail'
   )
 );
 if(isset($_SESSION["logged"]) && $_SESSION["logged"] === true) {

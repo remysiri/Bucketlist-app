@@ -32,6 +32,18 @@ class ActivitiesController extends Controller{
 
   }
 
+  public function list() {
+    $activities = $this->activityDAO->selectAllActivityByCategory($_GET["category"]);
+
+    $this->set("activities", $activities);
+  }
+
+  public function detail() {
+    $activity = $this->activityDAO->selectActivityById($_GET["id"]);
+
+    $this->set("activity", $activity);
+  }
+
   public function create() {
 
     if(!empty($_POST['action'])){
