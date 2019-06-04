@@ -20,7 +20,7 @@ class RegisterController extends Controller{
           $this->set("errors", $errors);
         }else{
           $_SESSION['info'] = 'Bedankt voor je registratie';
-          header('Location:index.php?page=register');
+          header('Location:index.php?page=login');
           exit();
         }
       }
