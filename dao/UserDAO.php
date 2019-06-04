@@ -28,11 +28,12 @@ class UserDAO extends DAO {
 
     public function addUser($data) {
         $errors = $this->validate($data);
+        $hashedpw = password_hash($data['password'], PASSWORD_DEFAULT);
         if(empty($errors)) {
             $sql = "INSERT INTO `users` (`username`,`password`,`email`, `role`) VALUES (:username, :password, :email, :role)";
             $stmt = $this->pdo->prepare($sql);
             $stmt->bindValue('username', $data['username']);
-            $stmt->bindValue('password', $data['password']);
+            $stmt->bindValue('password', $hashedpw);
             $stmt->bindValue('email', $data['email']);
             $stmt->bindValue('role', 0);
             $stmt->execute();
