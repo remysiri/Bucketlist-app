@@ -11,6 +11,21 @@ body {
     color: #ED4A4A;
 }
 
+a {
+    color: #ED4A4A;
+    text-decoration: none;
+}
+
+input {
+    border: 1px solid #D3D3D3;
+    padding: 8px 15px;
+    border-radius: 6px;
+    display: block;
+    margin: 0 auto;
+    width: 180px;
+    margin-bottom: 10px;
+}
+
 /*------------------------------LAYOUT----------------------*/
 
 main {
@@ -32,7 +47,7 @@ main {
 
 .main__container {
     max-width: 1072px;
-    margin: 0 auto;
+    margin: 0 auto; 
     padding: 40px 0 40px 0;
 }
 
@@ -43,3 +58,30 @@ main {
 
 /*---------------------------AUTH--------------------------------*/
 
+.auth__container {
+    box-shadow:  0px 0px 2px #a8a8a8;
+    padding: 30px 0px 0px 0px;
+    width: 360px;
+    margin: 0 auto;
+    margin-top: calc(100vh - 65%);
+    border-radius: 6px;
+}
+
+.login__signup {
+    margin: 40px;
+    text-align: center;
+}
+
+.login__signup a {
+    text-decoration: none;
+}
+
+.auth-btn {
+    width: 100%;
+    margin-top: 20px;
+    padding: 5px;
+    border-radius: 0px 0px 6px 6px;
+    border: none;
+    background: #ED4A4A;
+    color: #fff;
+}
