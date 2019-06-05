@@ -15,23 +15,23 @@
       <p class="header__undertitle">Your dreams starts here</p>
     </header>
 
-    <?php if(!empty($_SESSION["logged"])): ?>
-      <nav class="navigation">
-        <ul>
-          <li><p>logged in as <span><?php echo $_SESSION["username"]; ?></span></p><li>
-          <li><a href="index.php?page=create">Create new activity</a></li>
-          <li><a href="">My bucketlist</a></li>
-          <li><a href="">Saved Items</a></li>
-          <li><a href="">My Bookings</a></li>
-          <?php if($_SESSION["role"] === 3): ?>
-            <li><a href="">Administration</a></li>
-          <?php endif; ?>
-          <form action="" method="POST">
-            <input type="hidden" name="action" value="logout"/>
-            <button type="submit">Logout</button>
-          </form>
-      </nav>
-    <?php endif; ?>
+    <nav class="navigation">
+      <li><a href="index.php">Home</a></li>
+      <?php if(!empty($_SESSION["logged"])): ?>
+        <li><p>logged in as <span><?php echo $_SESSION["username"]; ?></span></p><li>
+        <li><a href="index.php?page=create">Create new activity</a></li>
+        <li><a href="index.php?page=list&user=<?php echo $_SESSION["id"]; ?>">My bucketlist</a></li>
+        <li><a href="">Saved Items</a></li>
+        <li><a href="">My Bookings</a></li>
+        <?php if($_SESSION["role"] === 3): ?>
+          <li><a href="index.php?page=admin">Administration</a></li>
+        <?php endif; ?>
+        <form action="" method="POST">
+          <input type="hidden" name="action" value="logout"/>
+          <button type="submit">Logout</button>
+        </form>
+      <?php endif; ?>
+    </nav>
 
     <div class="main__container">
       <?php echo $content; ?>

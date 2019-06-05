@@ -10,6 +10,7 @@ class ActivitiesController extends Controller{
   }
   public function index() {
       $activities = $this->activityDAO->selectAllActivities();
+      $uncategorized = $this->activityDAO->selectAllActivityByCategory(null);
       $activeActivity = $this->activityDAO->selectActivityByActive();
       $popularActivity = $this->activityDAO->selectActivityByVotes(10);
 
@@ -23,6 +24,7 @@ class ActivitiesController extends Controller{
       $seconds_left = floor($remain % 60);
 
       $this->set("activities", $activities);
+      $this->set("uncategorized", $uncategorized);
       $this->set("active", $activeActivity);
       $this->set("popular", $popularActivity);
       $this->set("days", $days_left);
@@ -33,7 +35,14 @@ class ActivitiesController extends Controller{
   }
 
   public function list() {
-    $activities = $this->activityDAO->selectAllActivityByCategory($_GET["category"]);
+    if(!empty($_GET["category"])) {
+      $activities = $this->activityDAO->selectAllActivityByCategory($_GET["category"]);
+    } else if(!empty($_GET["user"])) {
+      $activities = $this->activityDAO->selectAllActivitiesByAuthorId($_GET["user"]);
+    } else {
+      header("location: index.php");
+      exit();
+    }
 
     $this->set("activities", $activities);
   }

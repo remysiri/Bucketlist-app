@@ -18,10 +18,9 @@ class RegisterController extends Controller{
         if(!$insertUser){
           $errors = $this->userDAO->validate($_POST);
           $this->set("errors", $errors);
-        }else{
+        } else {
           $_SESSION['info'] = 'Bedankt voor je registratie';
-          header('Location:index.php?page=login');
-          exit();
+          header("location: index.php");
         }
       }
     }

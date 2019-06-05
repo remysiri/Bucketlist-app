@@ -1,4 +1,5 @@
 <div class="auth__container">
+    <p><?php if(!empty($_SESSION["info"])) { echo $_SESSION["info"]; } ?></p>
     <form action="index.php?page=login" method="POST">
     <input type="hidden" name="action" value="login"/> 
         <div class="form-group">

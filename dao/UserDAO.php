@@ -66,13 +66,13 @@ class UserDAO extends DAO {
         $errors = [];
 
         if (!empty($data["username"])) {
-            $sql_username = "SELECT COUNT(username) AS account FROM users WHERE username = :username";
+            $sql_username = "SELECT username FROM users WHERE username = :username";
             $stmt = $this->pdo->prepare($sql_username);
             $stmt->bindValue("username", $data["username"]);
             $stmt->execute();
             $result_user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            if($result_user["account"] > 0) {
+            if($result_user["username"] == $data["username"]) {
                 $errors["username"] = "Username already taken.";
             }
         } else if (empty($data["username"])) {
@@ -80,13 +80,13 @@ class UserDAO extends DAO {
         }
 
         if (!empty($data["email"])) {
-            $sql_email = "SELECT COUNT(email) AS account FROM users WHERE email = :email";
+            $sql_email = "SELECT email FROM users WHERE email = :email";
             $stmt = $this->pdo->prepare($sql_email);
             $stmt->bindValue("email", $data["email"]);
             $stmt->execute();
             $result_mail = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            if($result_mail["account"] > 0) {
+            if($result_mail["email"] == $data["email"]) {
                 $errors["email"] = "Email already taken.";
             }
         } else if (empty($data["email"])) {

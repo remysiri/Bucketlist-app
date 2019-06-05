@@ -3,7 +3,7 @@
     <?php if(empty($active)): ?>
     <p>Geen actieve activiteit</p>
     <?php else: ?>
-    <h3 class="activity__title bottom-left"><?php echo $active["name"]; ?><span class="activity__more"><a href="">Read more</a></span></h3>
+    <h3 class="activity__title bottom-left"><?php echo $active["name"]; ?><span class="activity__more"><a href="index.php?page=detail&id=<?php echo $active["id"]; ?>">Read more</a></span></h3>
     <?php endif; ?>
 </div>
 
@@ -15,7 +15,7 @@
     <?php foreach($popular as $activity): ?>
     <div class="slides">
         <img src="">
-        <h3 class="activity__title bottom-left"><?php echo $activity["name"]; ?><span class="activity__more"><a href="">Read more</a></span></h3>
+        <h3 class="activity__title bottom-left"><?php echo $activity["name"]; ?><span class="activity__more"><a href="index.php?page=detail&id=<?php echo $activity["id"]; ?>">Read more</a></span></h3>
     </div> 
     <?php endforeach; ?>
     <?php endif; ?>
@@ -38,15 +38,18 @@
     </a>
 </div>
 
-<?php if(empty($activities)): ?>
-<p>Geen activiteiten</p>
-<?php else: ?>
-<ul>
-<?php foreach($activities as $activity): ?>
-<li><?php echo $activity ?></li>
+<h2 class="title-left-margin">Uncategorized</h2>
+
+<ul class="list__activity">
+    <?php if(empty($uncategorized)): ?>
+        <?php if(!empty($_GET["user"])) { echo "<li><h3><span class='red-bold'>0. </span>U heeft nog geen bucketlist, maak nu uw bucketlist!</h3></li>"; } ?>
+        <li><h3><span class="red-bold">0. </span>Geen activiteiten</h3></li>
+    <?php else: ?>
+        <?php foreach($uncategorized as $activity): ?>
+            <li><h3><span class="red-bold"><?php echo $activity["id"]; ?>. </span><?php echo $activity["name"]; ?> <a href="index.php?page=detail&id=<?php echo $activity["id"]; ?>" class="list__link">Read more</a></h3></li>
+        <?php endforeach; ?>
+    <?php endif; ?>
 </ul>
-<?php endforeach; ?>
-<?php endif; ?>
 
 
     <script>

@@ -18,6 +18,14 @@ class ActivityDAO extends DAO {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    public function selectAllActivitiesByAuthorId($id) {
+        $sql = "SELECT * FROM activities WHERE created_by = :id";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue("id", $id);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public function selectActivityByActive() {
         $sql = "SELECT * FROM activities WHERE active = 1";
         $stmt = $this->pdo->prepare($sql);

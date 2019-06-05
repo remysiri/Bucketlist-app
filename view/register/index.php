@@ -1,7 +1,6 @@
 <div class="auth__container">
     <form action="index.php?page=register" method="POST">
         <input type="hidden" name="action" value="addUser"/> 
-        <span><?php if(!empty($_SESSION["info"])) { echo $_SESSION["info"]; } ?></span>
         <div class="form-group">
             <input type="text" name="username" id="username" placeholder="Username" />
             <span class="username_error"><?php if(!empty($errors["username"])) { echo $errors["username"];} ?></span>
