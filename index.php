@@ -36,6 +36,10 @@ $routes = array(
   'admin' => array(
     'controller' => 'Admin',
     'action' => 'index'
+  ),
+  'saved' => array(
+    'controller' => 'Activities',
+    'action' => 'saved'
   )
 );
 if(isset($_SESSION["logged"]) && $_SESSION["logged"] === true) {

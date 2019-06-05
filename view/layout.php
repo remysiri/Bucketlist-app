@@ -21,7 +21,7 @@
         <li><p>logged in as <span><?php echo $_SESSION["username"]; ?></span></p><li>
         <li><a href="index.php?page=create">Create new activity</a></li>
         <li><a href="index.php?page=list&user=<?php echo $_SESSION["id"]; ?>">My bucketlist</a></li>
-        <li><a href="">Saved Items</a></li>
+        <li><a href="index.php?page=saved">Saved Items</a></li>
         <li><a href="">My Bookings</a></li>
         <?php if($_SESSION["role"] === 3): ?>
           <li><a href="index.php?page=admin">Administration</a></li>

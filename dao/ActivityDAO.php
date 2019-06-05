@@ -64,6 +64,38 @@ class ActivityDAO extends DAO {
         }
     }
 
+    public function saveActivity($data) {
+        $sql = "INSERT INTO `saved_activities` (`user_id`, `activity_id`) VALUES (:userId, :activityId)";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue('userId', $data["user-id"]);
+        $stmt->bindValue('activityId', $data["activity-id"]);
+        $stmt->execute();
+    }
+
+    public function removeActivity($data) {
+        $sql = "DELETE FROM saved_activities WHERE activity_id = :activityId AND user_id = :userId";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue('activityId', $data["activity-id"]);
+        $stmt->bindValue('userId', $data["user-id"]);
+        $stmt->execute();
+    }
+
+    public function removeBucket($data) {
+        $sql = "DELETE FROM activities WHERE id = :activityId AND created_by = :userId";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue('activityId', $data["activity-id"]);
+        $stmt->bindValue('userId', $data["user-id"]);
+        $stmt->execute();
+    }
+
+    public function selectAllSavedActivitiesByUserId($id) {
+        $sql = "SELECT * FROM activities INNER JOIN saved_activities ON activities.id = saved_activities.activity_id WHERE user_id = :id";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue("id", $id);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public function editActivity() {
 
     }

@@ -37,11 +37,37 @@ class ActivitiesController extends Controller{
   public function list() {
     if(!empty($_GET["category"])) {
       $activities = $this->activityDAO->selectAllActivityByCategory($_GET["category"]);
-    } else if(!empty($_GET["user"])) {
+    } else if(!empty($_GET["user"]) && $_GET["user"] == $_SESSION["id"]) {
       $activities = $this->activityDAO->selectAllActivitiesByAuthorId($_GET["user"]);
     } else {
       header("location: index.php");
       exit();
+    }
+
+    if(!empty($_POST["action"])) {
+      if($_POST["action"] == "saveActivity") {
+        $saveActivity = $this->activityDAO->saveActivity($_POST);
+        header("location: index.php?page=saved");
+        exit();
+      }
+
+      if($_POST["action"] == "removeBucket") {
+        $removeBucket = $this->activityDAO->removeBucket($_POST);
+        header("location: index.php");
+        exit();
+      }
+    }
+
+    $this->set("activities", $activities);
+  }
+
+  public function saved() {
+    $activities = $this->activityDAO->selectAllSavedActivitiesByUserId($_SESSION["id"]);
+
+    if(!empty($_POST["action"])) {
+      if($_POST["action"] == "removeSaved") {
+        $removeSaved = $this->activityDAO->removeActivity($_POST);
+      }
     }
 
     $this->set("activities", $activities);
@@ -70,7 +96,7 @@ class ActivitiesController extends Controller{
   }
 
   public function edit() {
-    
+
   }
 
 }
