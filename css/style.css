@@ -181,3 +181,15 @@ main {
     text-transform: uppercase;
     font-size: 12px;
 }
+
+
+.table__wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+.table__wrapper .row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-column: 1 / -1;
+}

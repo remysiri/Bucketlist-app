@@ -54,7 +54,6 @@ class ActivitiesController extends Controller{
   }
 
   public function create() {
-
     if(!empty($_POST['action'])){
       if($_POST["action"] == "createActivity") {
         $insertActivity = $this->activityDAO->createActivity($_POST);
@@ -68,9 +67,12 @@ class ActivitiesController extends Controller{
         }
       }
     }
-
-
   }
+
+  public function edit() {
+    
+  }
+
 }
 
 

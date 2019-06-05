@@ -29,6 +29,10 @@ $routes = array(
     'controller' => 'Activities',
     'action' => 'detail'
   ),
+  'edit' => array(
+    'controller' => 'Activities',
+    'action' => 'edit'
+  ),
   'admin' => array(
     'controller' => 'Admin',
     'action' => 'index'
