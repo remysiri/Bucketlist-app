@@ -4,6 +4,7 @@
     <p>Geen actieve activiteit</p>
     <?php else: ?>
     <h3 class="activity__title bottom-left"><?php echo $active["name"]; ?><span class="activity__more"><a href="index.php?page=detail&id=<?php echo $active["id"]; ?>">Read more</a></span></h3>
+    <img class="activity__active-image" src="./assets/img/active.jpg"/>
     <?php endif; ?>
 </div>
 

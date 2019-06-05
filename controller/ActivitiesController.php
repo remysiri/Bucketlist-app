@@ -75,8 +75,27 @@ class ActivitiesController extends Controller{
 
   public function detail() {
     $activity = $this->activityDAO->selectActivityById($_GET["id"]);
+    if($activity["active"] !== 1) {
+      header("location: index.php");
+      exit();
+    }
 
     $this->set("activity", $activity);
+
+
+
+    $startTime = gmdate('U', strtotime($activity["start_time"]));
+    $remain = $startTime - gmdate('U');
+
+    $days_left = floor($remain / (24 * 60 * 60));
+    $hours_left = floor($remain % (24 * 60 * 60) / 3600);
+    $minutes_left = floor($remain % (60 * 60) / 60);
+    $seconds_left = floor($remain % 60);
+
+    $this->set("days", $days_left);
+    $this->set("hours", $hours_left);
+    $this->set("minutes", $minutes_left);
+    $this->set("seconds", $seconds_left);
   }
 
   public function create() {
@@ -96,7 +115,15 @@ class ActivitiesController extends Controller{
   }
 
   public function edit() {
+    $activity = $this->activityDAO->selectActivityById($_GET["id"]);
+    if($_SESSION["id"] >= 3 && !empty($_GET["id"])) {
 
+    } else {
+      header("location: index.php");
+      exit();
+    }
+
+    $this->set("activity", $activity);
   }
 
 }

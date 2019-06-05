@@ -20,7 +20,7 @@
         <div class="table__activity-item cell"><?php echo $activity["votes"]; ?></div>
         <div class="table__activity-item cell"><?php echo $activity["active"]; ?></div>
         <div class="table__activity-item cell"><?php if($activity["start_time"] == null) { echo "No date"; } else { echo date("d-m-Y", strtotime($activity["start_time"])); } ?></div>
-        <div class="table__activity-item cell"><a href="index.php?page=detail&id=<?php echo $activity["id"]; ?>" class="">Edit</a></div>
+        <div class="table__activity-item cell"><a href="index.php?page=edit&id=<?php echo $activity["id"]; ?>" class="">Edit</a></div>
     </div>
     <?php endforeach; ?>
     <?php endif; ?>

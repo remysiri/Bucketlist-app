@@ -20,9 +20,6 @@
         </select>
     </div>
     <div class="form-group">
-        <input type="datetime-local" name="start-time" id="start-time" />
-    </div>
-    <div class="form-group">
         <button type="submit">Create</button>
     </div>
 </form>
