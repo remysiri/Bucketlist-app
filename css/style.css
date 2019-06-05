@@ -11,6 +11,10 @@ body {
     color: #ED4A4A;
 }
 
+.color-gray {
+    color: #707070;
+}
+
 a {
     color: #ED4A4A;
     text-decoration: none;
@@ -38,6 +42,14 @@ h3 {
 .title-center {
     text-align: center;
     vertical-align: middle;
+}
+
+.left-align {
+    text-align: left;
+}
+
+.center-align {
+    text-align: center;
 }
 
 /*------------------------------LAYOUT----------------------*/
@@ -176,20 +188,61 @@ main {
     border-bottom: none;
 }
 
-.list__link {
-    margin-left: 150px;
+
+.table__wrapper-admin {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+.table__wrapper-user {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.table__wrapper-admin, .table__wrapper-user .cell a {
     text-transform: uppercase;
     font-size: 12px;
 }
 
-
-.table__wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-}
-
-.table__wrapper .row {
+.table__wrapper-admin .row {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-column: 1 / -1;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid black;
+    padding: 15px 0;
+}
+
+.table__wrapper-user .row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column: 1 / -1;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid black;
+    padding: 15px 0;
+}
+
+.row-dropdown {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column: 1 / -1;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+.table__wrapper-admin, .table__wrapper-user .row:last-child {
+    border-bottom: none;
+}
+
+.table__header {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.table__activity-item-main {
+    font-weight: bold;
+    color: #707070;
 }
