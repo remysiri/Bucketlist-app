@@ -116,7 +116,7 @@ class ActivitiesController extends Controller{
 
   public function edit() {
     $activity = $this->activityDAO->selectActivityById($_GET["id"]);
-    if($_SESSION["id"] >= 3 && !empty($_GET["id"])) {
+    if($_SESSION["role"] >= 3 && !empty($_GET["id"])) {
 
     } else {
       header("location: index.php");
