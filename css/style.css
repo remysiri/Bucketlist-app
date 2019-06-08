@@ -89,6 +89,18 @@ main {
 .navigation {
     position: fixed;
     left: 0;
+    box-shadow: 0px 0px 2px black;
+}
+
+.navigation li {
+    margin: 20px;
+    list-style: none;
+}
+
+.logout {
+    border: none;
+    background: none;
+    margin: 20px;
 }
 
 /*---------------------------AUTH--------------------------------*/

@@ -16,19 +16,18 @@
     </header>
 
     <nav class="navigation">
-      <li><a href="index.php">Home</a></li>
+      <li><a href="index.php"><img src="./assets/icons/user.png"/></a></li>
       <?php if(!empty($_SESSION["logged"])): ?>
-        <li><p>logged in as <span><?php echo $_SESSION["username"]; ?></span></p><li>
-        <li><a href="index.php?page=create">Create new activity</a></li>
-        <li><a href="index.php?page=list&user=<?php echo $_SESSION["id"]; ?>">My bucketlist</a></li>
-        <li><a href="index.php?page=saved">Saved Items</a></li>
-        <li><a href="">My Bookings</a></li>
+        <li><a href="index.php?page=create"><img src="./assets/icons/add.png"/></a></li>
+        <li><a href="index.php?page=list&user=<?php echo $_SESSION["id"]; ?>"><img src="./assets/icons/bucket.png"/></a></li>
+        <li><a href="index.php?page=saved"><img src="./assets/icons/saved.png"/></a></li>
+        <li><a href=""><img src="./assets/icons/booking.png"/></a></li>
         <?php if($_SESSION["role"] === 3): ?>
-          <li><a href="index.php?page=admin">Administration</a></li>
+          <li><a href="index.php?page=admin"><img src="./assets/icons/admin.png"/></a></li>
         <?php endif; ?>
         <form action="" method="POST">
           <input type="hidden" name="action" value="logout"/>
-          <button type="submit">Logout</button>
+          <button class="btn logout" type="submit"><img src="./assets/icons/logout.png"/></button>
         </form>
       <?php endif; ?>
     </nav>
