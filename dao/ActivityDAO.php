@@ -34,7 +34,7 @@ class ActivityDAO extends DAO {
     }
 
     public function selectActivityByVotes($votes) {
-        $sql = "SELECT * FROM activities WHERE votes >= :votes";
+        $sql = "SELECT * FROM activities WHERE votes >= :votes ORDER BY votes DESC";
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue("votes", $votes);
         $stmt->execute();

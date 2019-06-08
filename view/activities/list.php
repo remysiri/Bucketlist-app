@@ -13,7 +13,7 @@
         <div class="table__activity-item-main cell center-align"><span class="red-bold"><?php echo $activity["id"]; ?></span></div>
         <div class="table__activity-item-main cell left-align"><?php echo $activity["name"]; ?></div>
         <div class="table__activity-item-main cell center-align">
-            <a href="index.php?page=detail&id=<?php echo $activity["id"]; ?>" class="">Read more</a>
+            <a href="" class="readmore" data-id="<?php echo $activity["id"]; ?>">Read more</a>
             <?php if(!empty($_GET["user"])): ?>
                 <form action="index.php?page=list&user=<?php echo $_SESSION["id"]; ?>" method="POST">
                     <input type="hidden" name="action" value="removeBucket">
@@ -24,7 +24,7 @@
             <?php endif; ?>
         </div>
 
-        <div class="row-dropdown">
+        <div class="row-dropdown dropdown-item-<?php echo $activity["id"]; ?>">
             <div class="table__activity-item cell center-align"></div>
             <div class="table__activity-item cell left-align">
                 <p class="color-gray"><?php echo $activity["description"]; ?></p>

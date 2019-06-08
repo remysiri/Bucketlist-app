@@ -165,10 +165,33 @@ main {
     display: grid;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
+    text-align: center;
+    position: relative;
+}
+
+.four-grid-item h3 {
+    display: inline-table;
+    position: absolute;
+    left: 40%;
+    z-index: 9999;
+    color: black;
+    font-size: 20px;
+}
+
+.four-grid-item img {
+    width: 100%;
+}
+
+.activity__category-image {
+    background: black;
+    opacity: .4;
 }
 
 .activity__title {
     text-transform: uppercase;
+    color: white;
+    font-weight: bold;
 }
 
 .bottom-left {
@@ -236,7 +259,7 @@ main {
 }
 
 .row-dropdown {
-    display: grid;
+    display: none;
     grid-template-columns: 1fr 1fr 1fr;
     grid-column: 1 / -1;
     align-items: center;

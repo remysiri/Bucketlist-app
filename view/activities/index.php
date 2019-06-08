@@ -9,48 +9,54 @@
 </div>
 
 <h2 class="title-left-margin">Top picks</h2>
-<div class="fullwidth-item">
-    <?php if(empty($popular)): ?>
-    <p>Geen actieve activiteit</p>
+
+<div class="table__wrapper-user">
+    <?php if(empty($activities)): ?>
+        <?php if(!empty($_GET["user"])): ?>
+        <li><h3><span class="red-bold">0. </span>U heeft nog geen bucketlist, maak nu een bucketlist <a href="">hier</a></h3></li>
+        <?php else: ?>
+        <li><h3><span class="red-bold">0. </span>Geen activiteiten</h3></li>
+        <?php endif; ?>
     <?php else: ?>
     <?php foreach($popular as $activity): ?>
-    <div class="slides">
-        <img src="">
-        <h3 class="activity__title bottom-left"><?php echo $activity["name"]; ?><span class="activity__more"><a href="index.php?page=detail&id=<?php echo $activity["id"]; ?>">Read more</a></span></h3>
-    </div> 
+    <div class="row">
+        <div class="table__activity-item-main cell center-align"><span class="red-bold"><?php echo $activity["id"]; ?></span></div>
+        <div class="table__activity-item-main cell left-align"><?php echo $activity["name"]; ?></div>
+        <div class="table__activity-item-main cell center-align">
+            <a href="" class="readmore" data-id="<?php echo $activity["id"]; ?>">Read more</a>
+        </div>
+
+        <div class="row-dropdown dropdown-item-<?php echo $activity["id"]; ?>">
+            <div class="table__activity-item cell center-align"></div>
+            <div class="table__activity-item cell left-align">
+                <p class="color-gray"><?php echo $activity["description"]; ?></p>
+            </div>
+            <div class="table__activity-item cell center-align"></div>
+        </div>
+    </div>
     <?php endforeach; ?>
     <?php endif; ?>
-    
 </div>
 
 <h2 class="title-left-margin">Categories</h2>
 <div class="grid-wrapper">
     <a href="index.php?page=list&category=racing" class="four-grid-item">
         <h3 class="activity__title title-center">Racing</h3>
+        <img class="activity__category-image" src="./assets/img/racing.jpg"/>
     </a>
     <a href="index.php?page=list&category=stunts" class="four-grid-item">
         <h3 class="activity__title title-center">Stunts</h3>
+        <img class="activity__category-image" src="./assets/img/stunts.jpg"/>
     </a>
     <a href="index.php?page=list&category=trackdays" class="four-grid-item">
-        <h3 class="activity__title title-center">Track Days</h3>
+        <h3 class="activity__title title-center">Sightseeing</h3>
+        <img class="activity__category-image" src="./assets/img/sightseeing.jpg"/>
     </a>
     <a href="index.php?page=list&category=events" class="four-grid-item">
         <h3 class="activity__title title-center">Events</h3>
+        <img class="activity__category-image" src="./assets/img/events.jpg"/>
     </a>
 </div>
-
-<h2 class="title-left-margin">Uncategorized</h2>
-
-<ul class="list__activity">
-    <?php if(empty($uncategorized)): ?>
-        <?php if(!empty($_GET["user"])) { echo "<li><h3><span class='red-bold'>0. </span>U heeft nog geen bucketlist, maak nu uw bucketlist!</h3></li>"; } ?>
-        <li><h3><span class="red-bold">0. </span>Geen activiteiten</h3></li>
-    <?php else: ?>
-        <?php foreach($uncategorized as $activity): ?>
-            <li><h3><span class="red-bold"><?php echo $activity["id"]; ?>. </span><?php echo $activity["name"]; ?> <a href="index.php?page=detail&id=<?php echo $activity["id"]; ?>" class="list__link">Read more</a></h3></li>
-        <?php endforeach; ?>
-    <?php endif; ?>
-</ul>
 
 
     <script>
